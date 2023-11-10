@@ -1,0 +1,4 @@
+name = "ExampleTrapez"
+uuid = "c9a54254-7de4-4890-8373-2067c360f92f"
+authors = ["Collin Wittenstein <cwittens@students.uni-mainz.de>"]
+version = "0.1.0"
