@@ -1,3 +1,5 @@
+
+#import Pkg; Pkg.add("Documenter")
 using Documenter
 using Pkg: Pkg
 
@@ -8,11 +10,11 @@ if (get(ENV, "CI", nothing) != "true") &&
     push!(LOAD_PATH, dirname(@__DIR__))
 end
 
-using RSEinJulia
+using ExampleTrapez
 
 # Define module-wide setups such that the respective modules are available in doctests
-DocMeta.setdocmeta!(RSEinJulia,
-                    :DocTestSetup, :(using RSEinJulia); recursive = true)
+DocMeta.setdocmeta!(ExampleTrapez,
+                    :DocTestSetup, :(using ExampleTrapez); recursive = true)
 
 # Copy some files from the top level directory to the docs and modify them
 # as necessary
@@ -20,7 +22,7 @@ open(joinpath(@__DIR__, "src", "license.md"), "w") do io
     # Point to source license file
     println(io, """
     ```@meta
-    EditURL = "https://github.com/ranocha/2023-RSE_in_Julia/blob/main/LICENSE.md"
+    EditURL = "https://github.com/cwittens/ExampleTrapez/blob/main/LICENSE.md"
     ```
     """)
     # Write the modified contents
@@ -33,10 +35,10 @@ open(joinpath(@__DIR__, "src", "license.md"), "w") do io
 end
 
 # Make documentation
-makedocs(modules = [RSEinJulia],
-         sitename = "2023-RSE_in_Julia",
+makedocs(modules = [ExampleTrapez],
+         sitename = "ExampleTrapez",
          format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true",
-                                  canonical = "https://ranocha.github.io/2023-RSE_in_Julia/stable"),
+                                  canonical = "https://cwittens.github.io/ExampleTrapez/stable"),
          # Explicitly specify documentation structure
          pages = [
              "Home" => "index.md",
@@ -44,6 +46,6 @@ makedocs(modules = [RSEinJulia],
              "License" => "license.md",
          ])
 
-deploydocs(repo = "github.com/ranocha/2023-RSE_in_Julia",
+deploydocs(repo = "https://github.com/cwittens/ExampleTrapez/",
            devbranch = "main",
            push_preview = true)
